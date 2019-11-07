@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+
+
+{% block body %}
+    <div id="errors">
+        {% if error1 %}
+            {{ error1 }}
+        {% endif %}
+        {% if error2 %}
+            {{ error2 }}
+        {% endif %}
+    </div>
+
+    <form method="post" id="‫‪register_form‬‬" action="{% url 'register' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit" type="submit">register</button>
+    </form>
+    {% if form.errors %}
+        {% for error in form.errors %}
+            {{ error }}
+        {% endfor %}
+    {% endif %}
+
+
+{% endblock body %}
+
+
+

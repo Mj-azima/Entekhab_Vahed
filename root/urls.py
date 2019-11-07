@@ -20,8 +20,9 @@ from root import views
 
 urlpatterns = [
     path('' , views.index),
-    url(r'^register/$' , views.register , name='register'),
-    url(r'^login/$' , views.signUp),
-    url(r'^logout/$' , views.logout ),
+    url(r'^register/$' , views.signup , name='register'),
+    url(r'^login/$' , views.signin , name='login'),
+    url(r'^logout/$' , views.logout_ , name='logout'),
+    url(r'^contactus/$' , views.contactus , name='contactus'),
 
 ]

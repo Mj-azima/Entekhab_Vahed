@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+    <form action="." method="post">
+        {% csrf_token %}
+        {% if error %}
+            {{ error }}
+        {% endif %}
+
+
+        username:<br>
+        <input type="text" id="id_username" name="username" >
+        <br>
+        password:<br>
+        <input type="password" id="id_password" name="password" >
+        <br><br>
+        <button id="id_submit" type="submit" value="Submit">submit</button>
+</form>
+
+
+{% endblock body %}
+
+
+
