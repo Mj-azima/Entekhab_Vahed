@@ -4,10 +4,10 @@
 
 {% block body %}
 
-    <form method="post" id="register_form">
+    <form method="post" id="‫‪register_form‬‬" action="{% url 'register' %}">
         {% csrf_token %}
         {{ form.as_p }}
-    <button name="submit" type="submit">register</button>
+        <button name="submit" type="submit">register</button>
     </form>
 
 

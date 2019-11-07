@@ -20,6 +20,8 @@ from root import views
 
 urlpatterns = [
     path('' , views.index),
-    url(r'^register/$' , views.register),
+    url(r'^register/$' , views.register , name='register'),
+    url(r'^login/$' , views.signUp),
+    url(r'^logout/$' , views.logout ),
 
 ]
