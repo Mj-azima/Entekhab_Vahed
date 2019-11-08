@@ -2,7 +2,7 @@
 
 
 {% block body %}
-    <form method="post" name="setting_form">
+    <form method="post" id="setting_form">
         {% csrf_token %}
         First name:<br>
         <input type="text"  name="first_name" value="{{ firstname }}" >
