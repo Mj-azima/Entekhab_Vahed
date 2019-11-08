@@ -2,7 +2,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
+from django.forms import ModelForm
+from .models import Course
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
@@ -63,6 +64,14 @@ FAVORITE_DAYS_CHOICES = [
 #         # widget=forms.CheckboxSelectMultiple,
 #         choices=FAVORITE_DAYS_CHOICES,
 #     )
+
+
+
+class ArticleForm(ModelForm):
+     class Meta:
+         model = Course
+         fields = ['department' , 'name' , 'course_number' , 'group_number' ,'teacher' , 'start_time' ,'end_time' ,'first_day' ,'second_day']
+
 
 
 

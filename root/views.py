@@ -1,4 +1,4 @@
-
+import time
 
 from django.contrib.auth import authenticate, login
 from django.core.mail import send_mail
@@ -13,6 +13,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login ,logout
 
 from root.forms import SignInForm, SignUpForm, ContactForm
+from .models import Course
 
 
 def index(request):
@@ -187,27 +188,66 @@ def panel(request):
 
 
 # def new_course(request):
-#     form = NewCoursForm(request.POST)
+#     # form = NewCoursForm(request.POST)
 #
 #
 #     # new logic!
 #     if request.method == 'POST':
 #         # form = form_class(data=request.POST)
-#         if form.is_valid:
-#             department = request.POST.get('department')
-#             name = request.POST.get('name')
-#             course_number = request.POST.get('course_number')
-#             group_number = request.POST.get('group_number')
-#             teacher = request.POST.get('teacher')
-#             start_time = request.POST.get('start_time')
-#             end_time = request.POST.get('end_time')
-#             first_day = request.POST.get('first_day')
+#         # if form.is_valid:
+#         department = request.POST.get('department')
+#         name = request.POST.get('name')
+#         course_number = request.POST.get('course_number')
+#         group_number = request.POST.get('group_number')
+#         teacher = request.POST.get('teacher')
+#         start_time = request.POST.get('start_time')
+#         end_time = request.POST.get('end_time')
+#         first_day = request.POST.get('first_day')
+#         second_day = request.POST.get('second_day')
 #
+#         obj = Class(department=department , name=name , course_number= course_number , group_number=group_number , teacher= teacher , start_time=start_time , end_time=end_time , first_day=first_day , second_day=second_day)
+#         obj.save()
 #
 #
 #             # send_mail(title, [text, myemail], myemail , ['m.javad139177@gmail.com‬‬'])
 #             # ‫‪webe19lopers @ gmail.com
-#             return render(request, 'done.html', )
+#         return render(request, 'done.html' )
 #
 #
-#     return render(request , 'new_course.html' ,{'form' : form})
+#     return render(request , 'new_course.html')
+
+def new_course(request):
+    if request.method == "POST":
+        error_time = False
+        department = request.POST.get("department")
+        name = request.POST.get("name")
+        course_number = request.POST.get("course_number")
+        group_number = request.POST.get("group_number")
+        teacher = request.POST.get("teacher")
+        start_time = request.POST.get("start_time")
+        end_time = request.POST.get("end_time")
+        first_day = request.POST.get("first_day")
+        second_day = request.POST.get("second_day")
+
+        try:
+            time.strptime(start_time, '%H:%M')
+        except ValueError:
+            error_time = True
+            return render(request, "new_course.html", {"error_time": error_time})
+
+        try:
+            time.strptime(end_time, '%H:%M')
+        except ValueError:
+            error_time = True
+            return render(request, "new_course.html", {"error_time": error_time})
+
+        course = Course(department=department, name=name, course_number=course_number, group_number=group_number, teacher=teacher, start_time=start_time, end_time=end_time, first_day=first_day, second_day=second_day)
+        course.save()
+        return render(request, "panel.html")
+
+    return render(request, "new_course.html")
+
+
+def courses(request):
+    courses = Course.objects.all()
+    return render(request, "courses.html", {"courses": courses})

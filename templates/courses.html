@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+    <div id="all_courses">
+        {% for course in courses %}
+                <div class="{{ course.course_number }}_{{ course.group_number }}">
+                    <h4>{{ course.name }}</h4>
+
+                <div>{{course.department}}</div>
+            <div>{{course.first_day}} و {{ course.second_day }}</div>
+{#                <div>{% if course.first_day == 0 %}</div>#}
+{#                <div>{% endif %}</div>#}
+            <div>{{course.end_time}} تا {{ course.start_time }}</div>
+                    <div>{{course.teacher}}</div>
+
+
+            {% endfor %}
+    </div>
+
+{% else %}
+            login first !!
+{% endif %}
+
+{% endblock %}

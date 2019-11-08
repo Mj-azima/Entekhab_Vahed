@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^profile/$' , views.profile , name='profile'),
     url(r'^editprofile/$' , views.editprofile , name='editprofile'),
     url(r'^panel/$' , views.panel , name='panel'),
-    # url(r'^new_course/$' , views.new_course , name='new_course'),
+    url(r'^new_course/$' , views.new_course , name='new_course'),
+    url(r'^courses/$' , views.courses , name='courses'),
 
 ]

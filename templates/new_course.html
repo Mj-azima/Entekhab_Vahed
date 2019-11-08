@@ -1,11 +1,84 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block body %}
-    <form>
-        {{ form.as_p }}
-        <button type="submit">submit</button>
+
+{% if user.is_authenticated %}
+
+
+    {% if error_time %}
+
+              <strong>Oh Shit!!</strong> time format is incorrect!
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+
+    {% endif %}
+
+    <form id="make_course" action="{% url 'new_course' %}" method="post">
+        {% csrf_token %}
+
+            Department
+            <input type="text" name="department"   placeholder="Enter department" required>
+
+
+
+            Name
+            <input type="text" name="name"   placeholder="Enter name" required>
+
+
+
+            Course number
+            <input type="text" name="course_number"   placeholder="Enter course_number" required>
+
+
+
+            Group number
+            <input type="text" name="group_number"   placeholder="Enter group_number" required>
+
+
+
+            Teacher
+            <input type="text" name="teacher"  placeholder="Enter teacher" required>
+
+
+
+            Start Time
+            <input type="text" name="start_time"   placeholder="Enter start_time" required>
+
+
+            End time
+            <input type="text" name="end_time"   placeholder="Enter end_time" required>
+
+            First Dey
+            <select class="form-control" id="exampleFormControlSelect1" name="first_day">
+              <option value="0">Saturday</option>
+              <option value="1">Sunday</option>
+              <option value="2">Monday</option>
+              <option value="3">Tuesday</option>
+              <option value="4">Wednesday</option>
+            </select>
+
+            Second Dey
+            <select class="form-control" id="exampleFormControlSelect1" name="second_day">
+              <option value="0">Saturday</option>
+              <option value="1">Sunday</option>
+              <option value="2">Monday</option>
+              <option value="3">Tuesday</option>
+              <option value="4">Wednesday</option>
+            </select>
+        <div class="d-flex">
+        <button type="submit" class="btn btn-outline-success text-center mx-auto" style="width: 150px;">Create</button></div>
     </form>
+
+{% else%}
+    <div class="container mt-5">
+        <div class="alert alert-warning text-center" role="alert">
+            login first !!
+        </div>
+    </div>
+{% endif %}
+
 
 
 {% endblock %}

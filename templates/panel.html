@@ -3,4 +3,26 @@
 
 {% block body %}
 {#    <a id="make_new_course" href="{% url 'new_course' %}">new course‬‬</a>#}
+
+    {% if user.is_authenticated %}
+        {% if user.is_superuser  %}
+            <div class="p-25 d-flex mt-5">
+                <a href="{% url 'new_course' %}" id="make_new_course" class="btn btn-success mx-auto">
+                    <i class="fa fa-plus"></i>
+                    ساختن واحد جدید
+                </a>
+            </div>
+        {% endif %}
+
+        <a href="/courses/" id="courses" class="btn btn-primary mx-auto">
+            <i class="fa fa-eye"></i>
+            مشاهده واحد ها
+        </a>
+    {% else%}
+        <div class="container mt-5">
+        <div class="alert alert-warning text-center" role="alert">
+            login first !!
+        </div>
+        </div>
+    {% endif %}
 {% endblock %}
