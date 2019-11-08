@@ -143,9 +143,17 @@ def contactus(request):
     if request.method == 'POST':
         # form = form_class(data=request.POST)
         if form.is_valid:
-            title = request.POST.get('title', '')
-            myemail = request.POST.get('email', '')
-            text = request.POST.get('text', '')
+
+            department = request.POST.get('department')
+            name = request.POST.get('name')
+            course_number = request.POST.get('course_number')
+            group_number = request.POST.get('group_number')
+            teacher = request.POST.get('teacher')
+            start_time = request.POST.get('start_time')
+            end_time = request.POST.get('end_time')
+            first_day = request.POST.get('first_day')
+
+
 
             # send_mail(title, [text, myemail], myemail , ['m.javad139177@gmail.com‬‬'])
             # ‫‪webe19lopers @ gmail.com
@@ -190,6 +198,17 @@ def panel(request):
 
 def new_course(request):
     form = NewCoursForm(request.POST)
+
+
+    # new logic!
+    if request.method == 'POST':
+        # form = form_class(data=request.POST)
+        if form.is_valid:
+
+
+            # send_mail(title, [text, myemail], myemail , ['m.javad139177@gmail.com‬‬'])
+            # ‫‪webe19lopers @ gmail.com
+            return render(request, 'done.html', )
 
 
     return render(request , 'new_course.html' ,{'form' : form})
