@@ -251,3 +251,8 @@ def new_course(request):
 def courses(request):
     courses = Course.objects.all()
     return render(request, "courses.html", {"courses": courses})
+
+
+def search(request):
+    courses = Course.objects.filter(department=request.POST.get('search_query'))
+    return render(request , 'search.html' , { 'courses' : courses})

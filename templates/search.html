@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+        <form id="search_form" action="{% url 'search' %}" method="Post">
+            <input name="search_query">
+            <button name="submit"> </button>
+        </form>
+
+    <div id="search_result">
+        {% if courses  %}
+            {% for course in courses %}
+              {{ course }}
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
+
