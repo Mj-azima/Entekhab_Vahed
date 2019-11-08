@@ -34,7 +34,7 @@ def signup(request):
         if request.POST.get('password1') != request.POST.get('password2'):
             context["error2"] = 'گذرواژه و تکرار گذرواژه یکسان نیستند'
         if User.objects.filter(username=request.POST.get('username')).exists():
-            context["error1"] = '‫نام کاربری شما قبلا در سیستم ثبت شده است‬'
+            context["error1"] = '‫نام کاربری شما در سیستم موجود است‬'
         if context["error1"] or context["error2"]:
             return render(request, "signup.html", context)
         if form.is_valid():
