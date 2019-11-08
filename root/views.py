@@ -169,8 +169,8 @@ def profile(request):
 def editprofile(request):
     if request.method == 'POST':
         user = User.objects.get(username=request.user.username)
-        user.first_name = request.POST.get('firstname')
-        user.last_name = request.POST.get('lastname')
+        user.first_name = request.POST.get('first_name')
+        user.last_name = request.POST.get('last_name')
         user.save()
         return render(request, 'profile.html', {'username': request.user.username, 'firstname': request.user.first_name,
                                                 'lastname': request.user.last_name,
