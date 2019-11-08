@@ -28,6 +28,8 @@ class Course(models.Model):
     second_day = models.IntegerField(choices=DAY_CHOICES)
 
 
-# class GiveUnit(models.Model):
-#     unit = models.ManyToManyField(User)
+class GiveUnit(models.Model):
+    name = models.CharField(max_length=100)
+    user = models.ManyToManyField(User)
+
 

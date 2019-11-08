@@ -13,7 +13,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login ,logout
 
 from root.forms import SignInForm, SignUpForm, ContactForm
-from .models import Course
+from .models import Course , GiveUnit
 
 
 def index(request):
@@ -274,6 +274,15 @@ def new_course(request):
 
 def courses(request):
     courses = Course.objects.all()
+    if request.method == 'POST':
+        unit = request.POST.get('unit')
+        course = Course.objects.filter(id=unit)
+        user = User.objects.filter(username=request.user.username)
+
+        giveUnit = GiveUnit(name=course.name , user=user)
+        giveUnit.save()
+        return render(request , 'courses.html', {"units": GiveUnit })
+
     return render(request, "courses.html", {"courses": courses})
 
 

@@ -45,13 +45,19 @@
 
                         <div>{{course.end_time}}  {{ course.start_time }}</div>
                         <div>{{course.teacher}}</div>
-                    <form>
-                        <input type="hidden" value="{{ course.id }}">
+                    <form action="{% url '' %}" method="post">
+                        <input type="hidden" name="unit" value="{{ course.id }}">
                         <button type="button"> ثبت درس  </button>
                     </form>
-                <div id="my_courses">
-                    <a class="add"> </a>
-                </div>
+                    {% if units %}
+                        <div id="my_courses">
+                            {% for unit in units %}
+                                {{ unit }}
+                                <a class="add"></a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
                 </div>
         {% endfor %}
     </div>

@@ -101,12 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-Email_Host = 'smtp@gmail.com'
-EMAIL_HOST_USER = 'm.javad1391@gmail.com'
-EMAIL_HOST_PASSWORD = 'javad1377'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
+
 
 
 # Internationalization
@@ -127,3 +122,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = 'javad1377'
+EMAIL_HOST_USER = 'm.javad1391@gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
