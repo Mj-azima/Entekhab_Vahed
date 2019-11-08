@@ -155,18 +155,20 @@ def signin(request):
 
 
 def contactus(request):
-    if request.method == 'POST':
-        title = request.POST.get("title")
-        text = request.POST.get("text")
-        email = request.POST.get("email")
-        my_email = EmailMessage(
-                title,
-                f"{text}  {email}",
-                'GaMa forever' + '<webelopers.esband@gmail.com>',
-                ["webe19lopers@gmail.com"],
-            )
-        my_email.send()
-        return render(request, "done.html")
+    form = ContactForm(request.POST)
+    if form.is_valid():
+        if request.method == 'POST':
+            title = request.POST.get("title")
+            text = request.POST.get("text")
+            email = request.POST.get("email")
+            my_email = EmailMessage(
+                    title,
+                    f"{text}  {email}",
+                    'GaMa forever' + '<webelopers.esband@gmail.com>',
+                    ["webe19lopers@gmail.com"],
+                )
+            my_email.send()
+            return render(request, "done.html")
     return render(request, "contactus.html")
 
 def logout_(request):
