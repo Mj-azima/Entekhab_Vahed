@@ -1,7 +1,7 @@
 import time
 
 from django.contrib.auth import authenticate, login
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -134,25 +134,40 @@ def signin(request):
 
 
 
+# def contactus(request):
+#     # form_class = ContactForm
+#     form = ContactForm(request.POST)
+#
+#     # new logic!
+#     if request.method == 'POST':
+#         # form = form_class(data=request.POST)
+#         if form.is_valid:
+#             title = request.POST.get('title', '')
+#             myemail = request.POST.get('email', '')
+#             text = request.POST.get('text', '')
+#
+#             # send_mail(title, [text, myemail], myemail , ['m.javad139177@gmail.com‬‬'])
+#             # ‫‪webe19lopers @ gmail.com
+#             return render(request, 'done.html', )
+#     return render(request, 'contactus.html', {
+#         'form': form,
+#     })
+
+
 def contactus(request):
-    # form_class = ContactForm
-    form = ContactForm(request.POST)
-
-    # new logic!
     if request.method == 'POST':
-        # form = form_class(data=request.POST)
-        if form.is_valid:
-            title = request.POST.get('title', '')
-            myemail = request.POST.get('email', '')
-            text = request.POST.get('text', '')
-
-            # send_mail(title, [text, myemail], myemail , ['m.javad139177@gmail.com‬‬'])
-            # ‫‪webe19lopers @ gmail.com
-            return render(request, 'done.html', )
-    return render(request, 'contactus.html', {
-        'form': form,
-    })
-
+        title = request.POST.get("title")
+        text = request.POST.get("text")
+        email = request.POST.get("email")
+        my_email = EmailMessage(
+                title,
+                f"{text}  {email}",
+                'GaMa forever' + '<webelopers.esband@gmail.com>',
+                ["webe19lopers@gmail.com"],
+            )
+        my_email.send()
+        return render(request, "done.html")
+    return render(request, "contactus.html")
 
 def logout_(request):
     logout(request)

@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -25,3 +26,8 @@ class Course(models.Model):
     exam_date = models.CharField(max_length=120)
     first_day = models.IntegerField(choices=DAY_CHOICES)
     second_day = models.IntegerField(choices=DAY_CHOICES)
+
+
+# class GiveUnit(models.Model):
+#     unit = models.ManyToManyField(User)
+

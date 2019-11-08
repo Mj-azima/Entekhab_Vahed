@@ -31,18 +31,27 @@
     {% if courses %}
     <div id="all_courses">
         {% for course in courses %}
+
                 <div class="{{ course.course_number }}_{{ course.group_number }}">
-                    <h4>{{ course.name }}</h4>
 
-                    <div>{{course.department}}</div>
-                {% if course.first_day == course.second_day %}
-                    <div>{{ course.first_day }}</div>
-                {% else %}
-                    <div>{{course.first_day}}  {{ course.second_day }}</div>
-                {% endif %}
+                        <h4>{{ course.name }}</h4>
 
-                    <div>{{course.end_time}}  {{ course.start_time }}</div>
-                    <div>{{course.teacher}}</div>
+                        <div>{{course.department}}</div>
+                    {% if course.first_day == course.second_day %}
+                        <div>{{ course.first_day }}</div>
+                    {% else %}
+                        <div>{{course.first_day}}  {{ course.second_day }}</div>
+                    {% endif %}
+
+                        <div>{{course.end_time}}  {{ course.start_time }}</div>
+                        <div>{{course.teacher}}</div>
+                    <form>
+                        <input type="hidden" value="{{ course.id }}">
+                        <button type="button"> ثبت درس  </button>
+                    </form>
+                <div id="my_courses">
+                    <a class="add"> </a>
+                </div>
                 </div>
         {% endfor %}
     </div>
