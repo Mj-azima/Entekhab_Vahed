@@ -3,21 +3,24 @@
 
 
 {% block body %}
-
-    <form action="{% url 'login' %}" method="post" id="login_form">
-        {% csrf_token %}
-        {% if error %}
+        <div id="error">
+            {% if error %}
             {{ error }}
         {% endif %}
+        </div>
+    <form action="{% url 'login' %}" method="post" id="login_form">
+
+        {% csrf_token %}
+
 
 
         username:<br>
-        <input type="text" id="id_username" name="username" >
+        <input type="text"  name="username" >
         <br>
         password:<br>
-        <input type="password" id="id_password" name="password" >
+        <input type="password"  name="password" >
         <br><br>
-        <button id="id_submit" type="submit" value="Submit">submit</button>
+        <button  type="submit" value="Submit">submit</button>
 </form>
 
 
