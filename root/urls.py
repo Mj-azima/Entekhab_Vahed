@@ -29,6 +29,6 @@ urlpatterns = [
     url(r'^panel/$' , views.panel , name='panel'),
     url(r'^new_course/$' , views.new_course , name='new_course'),
     url(r'^courses/$' , views.courses , name='courses'),
-    url(r'^search/$' , views.search , name='search'),
+    url(r'^courses/search/$' , views.search , name='search'),
 
 ]

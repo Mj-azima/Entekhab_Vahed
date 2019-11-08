@@ -3,21 +3,43 @@
 {% block body %}
 
 {% if user.is_authenticated %}
+    <form id="search_form" action="{% url 'search' %}" method="Post">
+            {% csrf_token %}
+            <input name="search_query">
+            <button name="submit">submit</button>
+        </form>
+    {% if result  %}
+    <div id="search_result">
+
+            {% for res in result %}
+                  <div class="{{ res.course_number }}_{{ res.group_number }}">
+                        {{ res.name }}
+                       {{res.teacher}}
+
+                    </div>
+            {% endfor %}
+
+    </div>
+    {% endif %}
+
+    {% if courses %}
     <div id="all_courses">
         {% for course in courses %}
                 <div class="{{ course.course_number }}_{{ course.group_number }}">
                     <h4>{{ course.name }}</h4>
 
                     <div>{{course.department}}</div>
-                    <div>{{course.first_day}} و {{ course.second_day }}</div>
+                    <div>{{course.first_day}}  {{ course.second_day }}</div>
 {#                <div>{% if course.first_day == 0 %}</div>#}
 {#                <div>{% endif %}</div>#}
-                    <div>{{course.end_time}} تا {{ course.start_time }}</div>
+                    <div>{{course.end_time}}  {{ course.start_time }}</div>
                     <div>{{course.teacher}}</div>
-
                 </div>
-
         {% endfor %}
+    </div>
+    {% endif %}
+
+
 
 {% else %}
             login first !!

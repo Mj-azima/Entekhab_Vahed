@@ -255,4 +255,4 @@ def courses(request):
 
 def search(request):
     courses = Course.objects.filter(department=request.POST.get('search_query'))
-    return render(request , 'search.html' , { 'courses' : courses})
+    return render(request , 'courses.html' , { 'result' : courses})
