@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="158c1219-3af8-4b2f-a807-2ac7fc526685" name="Default Changelist" comment="" />
+    <list default="true" id="158c1219-3af8-4b2f-a807-2ac7fc526685" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/root/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/views.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +131,7 @@
       <updated>1573115396689</updated>
       <workItem from="1573115410067" duration="923000" />
       <workItem from="1573140402498" duration="2711000" />
-      <workItem from="1573147967077" duration="26325000" />
+      <workItem from="1573147967077" duration="26578000" />
     </task>
     <servers />
   </component>

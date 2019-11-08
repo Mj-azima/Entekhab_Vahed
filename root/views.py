@@ -31,8 +31,6 @@ def signup(request):
 
             }
 
-
-
         if request.POST.get('password1') != request.POST.get('password2'):
             context["error2"] = 'گذرواژه و تکرار گذرواژه یکسان نیستند'
         if User.objects.filter(username=request.POST.get('username')).exists():
