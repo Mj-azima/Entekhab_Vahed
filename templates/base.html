@@ -15,8 +15,8 @@
                 <a id="logout" href="{% url 'logout' %}">logout</a>
                 <a id="panel" href="{% url 'panel' %}">panel</a>
             {% else%}
-                <a id="login">login</a>
-                <a id="register">register</a>
+                <a id="login" href="{% url 'login' %}">login</a>
+                <a id="register" href="{% url 'register' %}">register</a>
                 <a id="contact_us" href="{% url 'contactus' %}">contactus</a>
             {% endif %}
 

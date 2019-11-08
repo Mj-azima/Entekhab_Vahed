@@ -43,25 +43,26 @@ FAVORITE_DAYS_CHOICES = [
     ('4', 'چهار شنبه'),
 ]
 
-class NewCoursForm(forms.Form):
-    department= forms.CharField()
-    name = forms.CharField()
-    course_number = forms.CharField()
-    group_number = forms.CharField()
-    teacher = forms.CharField()
-    start_time = forms.TimeField()
-    end_time = forms.TimeField()
-    first_day = forms.ChoiceField(
-        required=True,
-        # widget=forms.CheckboxSelectMultiple,
-        choices=FAVORITE_DAYS_CHOICES,
-    )
-    second_day = forms.ChoiceField(
-        required=False,
-        # widget=forms.CheckboxSelectMultiple,
-        choices=FAVORITE_DAYS_CHOICES,
-
-    )
+# class NewCoursForm(forms.Form):
+#     department= forms.CharField()
+#     name = forms.CharField()
+#     course_number = forms.CharField()
+#     group_number = forms.CharField()
+#     teacher = forms.CharField()
+#     start_time = forms.TimeField()
+#     end_time = forms.TimeField()
+#     first_day = forms.ChoiceField(
+#         required=True,
+#         # widget=forms.CheckboxSelectMultiple,
+#         choices=FAVORITE_DAYS_CHOICES,
+#     )
+#     second_day = forms.ChoiceField(
+#         required=False,
+#         default=null,
+#
+#         # widget=forms.CheckboxSelectMultiple,
+#         choices=FAVORITE_DAYS_CHOICES,
+#     )
 
 
 
