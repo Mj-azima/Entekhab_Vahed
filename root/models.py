@@ -21,6 +21,7 @@ class Course(models.Model):
     group_number = models.IntegerField()
     teacher = models.CharField(max_length=120)
     start_time = models.CharField(max_length=120)
-    end_time = models.CharField(max_length=120)
+    end_time = models.CharField(max_length=120 )
+    exam_date = models.CharField(max_length=120 , null=True , )
     first_day = models.IntegerField(choices=DAY_CHOICES)
     second_day = models.IntegerField(choices=DAY_CHOICES)

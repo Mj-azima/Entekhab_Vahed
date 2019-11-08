@@ -229,6 +229,7 @@ def new_course(request):
         end_time = request.POST.get("end_time")
         first_day = request.POST.get("first_day")
         second_day = request.POST.get("second_day")
+        exam_date = request.POST.get('exam_date')
 
         try:
             time.strptime(start_time, '%H:%M')
@@ -242,7 +243,12 @@ def new_course(request):
             error_time = True
             return render(request, "new_course.html", {"error_time": error_time})
 
-        course = Course(department=department, name=name, course_number=course_number, group_number=group_number, teacher=teacher, start_time=start_time, end_time=end_time, first_day=first_day, second_day=second_day)
+        try:
+            time.strptime(exam_date , '%yyyy:mm:dd')
+        except ValueError:
+            error_time =True
+
+        course = Course(department=department, name=name, course_number=course_number, group_number=group_number, teacher=teacher, start_time=start_time , exam_date=exam_date, end_time=end_time, first_day=first_day, second_day=second_day)
         course.save()
         return render(request, "panel.html")
 
