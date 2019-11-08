@@ -19,10 +19,14 @@ from django.urls import path, include
 from root import views
 
 urlpatterns = [
-    path('' , views.index),
+    path('' , views.index , name='index'),
     url(r'^register/$' , views.signup , name='register'),
     url(r'^login/$' , views.signin , name='login'),
     url(r'^logout/$' , views.logout_ , name='logout'),
     url(r'^contactus/$' , views.contactus , name='contactus'),
+    url(r'^profile/$' , views.profile , name='profile'),
+    url(r'^editprofile/$' , views.editprofile , name='editprofile'),
+    url(r'^panel/$' , views.panel , name='panel'),
+    url(r'^new_course/$' , views.new_course , name='new_course'),
 
 ]

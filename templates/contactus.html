@@ -2,7 +2,7 @@
 
 
 {% block body %}
-    <form method="post" id="‫‪register_form‬‬" action="{% url 'contactus' %}">
+    <form method="post" id="contact_us_form‬‬" action="{% url 'contactus' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button name="submit" type="submit">submit</button>

@@ -7,12 +7,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 
 # Create your views here.
-
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth import authenticate, login ,logout
 
-from root.forms import SignInForm , SignUpForm , ContactForm
+from root.forms import SignInForm, SignUpForm, ContactForm, NewCoursForm
 
 
 def index(request):
@@ -147,7 +147,7 @@ def contactus(request):
             myemail = request.POST.get('email', '')
             text = request.POST.get('text', '')
 
-            send_mail(title, [text, myemail], myemail , ['m.javad139177@gmail.com‬‬'])
+            # send_mail(title, [text, myemail], myemail , ['m.javad139177@gmail.com‬‬'])
             # ‫‪webe19lopers @ gmail.com
             return render(request, 'done.html', )
     return render(request, 'contactus.html', {
@@ -158,3 +158,38 @@ def contactus(request):
 def logout_(request):
     logout(request)
     return HttpResponseRedirect("/")
+
+@login_required(login_url='/login/')
+def profile(request):
+
+
+    return render(request, 'profile.html', {'username': request.user.username, 'firstname': request.user.first_name,
+                                            'lastname': request.user.last_name,})
+
+
+@login_required(login_url='/login/')
+def editprofile(request):
+    if request.method == 'POST':
+        user = User.objects.get(username=request.user.username)
+        user.first_name = request.POST.get('firstname')
+        user.last_name = request.POST.get('lastname')
+        user.save()
+        return render(request, 'profile.html', {'username': request.user.username, 'firstname': request.user.first_name,
+                                                'lastname': request.user.last_name,
+                                                })
+    return render(request, 'editprofile.html', )
+
+
+
+
+
+@login_required(login_url='/login/')
+def panel(request):
+    return render(request , 'panel.html')
+
+
+def new_course(request):
+    form = NewCoursForm(request.POST)
+
+
+    return render(request , 'new_course.html' ,{'form' : form})

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+    <form method="post" name="setting_form">
+        {% csrf_token %}
+        First name:<br>
+        <input type="text"  name="first_name" value="{{ firstname }}" >
+        <br>
+        Last name:<br>
+        <input type="text"  name="last_name"  value="{{ lastname }}">
+        <br>
+
+        <input id="id_submit" type="submit" value="Submit">
+    </form>
+{% endblock %}
