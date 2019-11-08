@@ -2,23 +2,10 @@ from django.db import models
 
 # Create your models here.
 
-# class Course(models.Model):
-#     FAVORITE_DAYS_CHOICES = [
-#         ('0', 'شنبه'),
-#         ('1', 'یک شنبه'),
-#         ('2', 'دو شنبه'),
-#         ('3', 'سه شنبه'),
-#         ('4', 'چهار شنبه'),
-#     ]
-#     department = models.CharField(max_length=200)
-#     name = models.CharField(max_length=200)
-#     course_number = models.IntegerField()
-#     group_number = models.IntegerField()
-#     teacher =models.CharField(max_length=200)
-#     start_time = models.TimeField()
-#     end_time = models.TimeField()
-#     first_day = models.CharField(choices=FAVORITE_DAYS_CHOICES  , max_length=1)
-#     second_day = models.CharField(choices=FAVORITE_DAYS_CHOICES , blank=True , null=True ,max_length=1)
+class Pic(models.Model):
+    name = models.ForeignKey()
+    image = models.ImageField(_('person image'), upload_to='db/images/%Y/%m/%d/', height_field=None, width_field=None,max_length=200)
+
 DAY_CHOICES = [
     (0, 'Saturday'),
     (1, 'Sunday'),

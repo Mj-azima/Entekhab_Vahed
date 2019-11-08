@@ -5,7 +5,13 @@
 {% if user.is_authenticated %}
     <form id="search_form" action="{% url 'search' %}" method="Post">
             {% csrf_token %}
+{#            <input name="search_query">#}
             <input name="search_query">
+            <input type="checkbox" name="department">
+            <input type="checkbox" name="teacher">
+            <input type="checkbox" name="course">
+
+
             <button name="submit">submit</button>
         </form>
     {% if result  %}
@@ -29,9 +35,12 @@
                     <h4>{{ course.name }}</h4>
 
                     <div>{{course.department}}</div>
+                {% if course.first_day == course.second_day %}
+                    <div>{{ course.first_day }}</div>
+                {% else %}
                     <div>{{course.first_day}}  {{ course.second_day }}</div>
-{#                <div>{% if course.first_day == 0 %}</div>#}
-{#                <div>{% endif %}</div>#}
+                {% endif %}
+
                     <div>{{course.end_time}}  {{ course.start_time }}</div>
                     <div>{{course.teacher}}</div>
                 </div>

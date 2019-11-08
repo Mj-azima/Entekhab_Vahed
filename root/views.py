@@ -163,7 +163,7 @@ def profile(request):
 
 
     return render(request, 'profile.html', {'username': request.user.username, 'firstname': request.user.first_name,
-                                            'lastname': request.user.last_name,})
+                                            'lastname': request.user.last_name, 'pic': 'fmkls'})
 
 
 @login_required(login_url='/login/')
@@ -172,6 +172,7 @@ def editprofile(request):
         user = User.objects.get(username=request.user.username)
         user.first_name = request.POST.get('first_name')
         user.last_name = request.POST.get('last_name')
+        user.profile_pic = request.POST.get('profile_pic')
         user.save()
         return render(request, 'profile.html', {'username': request.user.username, 'firstname': request.user.first_name,
                                                 'lastname': request.user.last_name,
@@ -254,5 +255,25 @@ def courses(request):
 
 
 def search(request):
-    courses = Course.objects.filter(department=request.POST.get('search_query'))
+    if request.method =='POST':
+        # ser = request.POST.get('search_query')
+        # department = request.POST.get('department')
+        # teacher = request.POST.get('teacher')
+        # course = request.POST.get('course')
+        search_query =request.POST.get('search_query')
+        # if department and teacher and course:
+        #     courses = Course.objects.filter(department=search_query , teacher=search_query , course=search_query)
+
+        # if department:
+        #     courses = Course.objects.filter(department=search_query)
+        # if teacher:
+        #     courses = Course.objects.filter(teacher=search_query)
+        # if course:
+        #     courses = Course.objects.filter(name=search_query)
+
+
+
+        courses = Course.objects.filter(department=search_query)
     return render(request , 'courses.html' , { 'result' : courses})
+
+
