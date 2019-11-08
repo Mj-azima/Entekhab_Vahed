@@ -73,11 +73,11 @@ class ArticleForm(ModelForm):
          fields = ['department' , 'name' , 'course_number' , 'group_number' ,'teacher' , 'start_time' ,'end_time' ,'first_day' ,'second_day']
 
 
-class ProfilePicForm(UserCreationForm):
-    profile_pic = forms.ImageField( upload_to='db/images/%Y/%m/%d/' ,height_field=None, width_field=None, max_length=200)
-    class Meta:
-        model = User
-        fields = ['username' ,'profile_pic']
+# class ProfilePicForm(UserCreationForm):
+#     profile_pic = forms.ImageField( upload_to='db/images/%Y/%m/%d/' ,height_field=None, width_field=None, max_length=200)
+#     class Meta:
+#         model = User
+#         fields = ['username' ,'profile_pic']
 
 
 

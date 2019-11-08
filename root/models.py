@@ -2,9 +2,9 @@ from django.db import models
 
 # Create your models here.
 
-class Pic(models.Model):
-    name = models.ForeignKey()
-    image = models.ImageField(_('person image'), upload_to='db/images/%Y/%m/%d/', height_field=None, width_field=None,max_length=200)
+# class Pic(models.Model):
+#     name = models.ForeignKey()
+#     image = models.ImageField(_('person image'), upload_to='db/images/%Y/%m/%d/', height_field=None, width_field=None,max_length=200)
 
 DAY_CHOICES = [
     (0, 'Saturday'),
