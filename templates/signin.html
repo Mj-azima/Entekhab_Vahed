@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <form action="." method="post">
+    <form action="{% url 'login' %}" method="post" id="login_form">
         {% csrf_token %}
         {% if error %}
             {{ error }}

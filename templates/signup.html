@@ -12,7 +12,7 @@
         {% endif %}
     </div>
 
-    <form method="post" id="‫‪register_form‬‬" action="{% url 'register' %}">
+    <form method="post" id="register_form" action="{% url 'register' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button name="submit" type="submit">register</button>
